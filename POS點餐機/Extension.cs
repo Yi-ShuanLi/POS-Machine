@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -78,7 +79,7 @@ namespace POS點餐機
                 Label label = new Label();
                 label.Text = title[i];
                 label.TextAlign = ContentAlignment.MiddleCenter;
-                label.Width = i == 0 ? 100:50 ;
+                label.Width = i == 0 ? 100 : 50;
                 flowLayoutPanel.Controls.Add(label);
             }
             flowLayoutPanel5.Controls.Add(flowLayoutPanel);
@@ -93,6 +94,8 @@ namespace POS點餐機
                     showPanel.addShowChoose(checkBox, numericUpDown);
             }
         }
-     
+      
+
+
     }
 }

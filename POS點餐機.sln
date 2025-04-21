@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS點餐機", "POS點餐機\POS點餐機.csproj", "{F5C3DBDA-064E-44CF-BC7B-4D5A8765A919}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHandlerTest", "EventHandlearTest\EventHandlerTest.csproj", "{AEA7A5B8-77AC-455F-8F7C-15200BCAE350}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F5C3DBDA-064E-44CF-BC7B-4D5A8765A919}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5C3DBDA-064E-44CF-BC7B-4D5A8765A919}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5C3DBDA-064E-44CF-BC7B-4D5A8765A919}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEA7A5B8-77AC-455F-8F7C-15200BCAE350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA7A5B8-77AC-455F-8F7C-15200BCAE350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEA7A5B8-77AC-455F-8F7C-15200BCAE350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEA7A5B8-77AC-455F-8F7C-15200BCAE350}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

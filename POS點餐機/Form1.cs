@@ -17,8 +17,8 @@ namespace POS點餐機
         {
             InitializeComponent();
         }
-       
-       
+
+        List<MealItem> FrontSelectedMeals = new List<MealItem>();
         List<string> mainMeal = new List<string>() { 
             "酥炸魚排$225","香煎雞肉$250","日式醬燒牛$210","台式爆蔥豬$210" 
             ,"皇家大排$225","酥炸魚排$225","酥炸雞柳$250","經典牛排$300"
@@ -61,7 +61,7 @@ namespace POS點餐機
             if (checkBox.Checked )
             {
                 if(numericUpDown.Value == 0)
-                numericUpDown.Value = 1;
+                    numericUpDown.Value = 1;
                 
             }
             else
@@ -76,7 +76,7 @@ namespace POS點餐機
         {
             NumericUpDown numericUpDown = (NumericUpDown)sender;
             FlowLayoutPanel flowLayoutPanel = (FlowLayoutPanel)numericUpDown.Parent;
-            CheckBox checkBox = (CheckBox)flowLayoutPanel.Controls[0];
+            CheckBox checkBox = (CheckBox)flowLayoutPanel.Controls[0];            
             if (numericUpDown.Value <= 0)
             {
                 checkBox.Checked = false;
@@ -84,11 +84,12 @@ namespace POS點餐機
             }
             if (numericUpDown.Value >= 1)
             {
-                checkBox.Checked=true;
-                
+                checkBox.Checked=true;                              
             }
-            ClearAndUpdate();
-            CalculateTatalAmount();
+            MealItem newItem = new MealItem(checkBox.Text, (int)numericUpDown.Value);            
+            flowLayoutPanel5.Controls.Clear();
+            flowLayoutPanel5.Controls.Add(Order.AddOrder(newItem));          
+            
         }
 
       
@@ -124,5 +125,9 @@ namespace POS點餐機
             flowLayoutPanel5.CheckAreaItems(flowLayoutPanel4);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
