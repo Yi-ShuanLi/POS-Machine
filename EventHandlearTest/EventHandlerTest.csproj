@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MessageHandler.cs" />
     <Compile Include="FindPerson.cs" />
     <Compile Include="ContactPerson.cs" />
     <Compile Include="SayHello.cs" />

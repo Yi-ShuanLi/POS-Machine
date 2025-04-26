@@ -1,12 +1,13 @@
-﻿using System;
+﻿using EventHandlerTest2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Xml.Linq;
 
-namespace EventHandlearTest
+namespace EventHandlerTest2
 {
     class FindPerson
     {
@@ -14,8 +15,8 @@ namespace EventHandlearTest
         {
             Console.WriteLine("搜索中...請稍候");
             Thread.Sleep(1000);
-            Console.WriteLine("找到目標對象，正在嘗試進行聯繫");            
-            Random random = new Random(Guid.NewGuid().GetHashCode());          
+            Console.WriteLine("找到目標對象，正在嘗試進行聯繫");
+            Random random = new Random(Guid.NewGuid().GetHashCode());
             int num = random.Next(0, 3);
             if (num == 0) //間接聯繫
             {
