@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DisCount.cs" />
     <Compile Include="ShowPanel.cs" />
     <Compile Include="PanelHandler.cs" />
     <Compile Include="Order.cs" />

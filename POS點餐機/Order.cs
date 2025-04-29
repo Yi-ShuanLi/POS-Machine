@@ -16,7 +16,7 @@ namespace POS點餐機
         public static List<MealItem> OrderList = new List<MealItem>();
        
        
-        public static void AddOrder(MealItem newItem)
+        public static void AddOrder(string orderType,MealItem newItem)
         {
             MealItem item = OrderList.FirstOrDefault(x => x.Name == newItem.Name);
             if (item == null)
@@ -30,9 +30,14 @@ namespace POS點餐機
             else if (newItem.Quantity >= 1)
             {
                 item.Quantity = newItem.Quantity;                            
-            }    
-            ShowPanel.UpdateSelectedOnShowPanel(OrderList);
+            }
+            DisCount.DisCountOrder(orderType, OrderList);
         }
-      
+
+        public static void RefreshOrder(string orderType)
+        {
+            DisCount.DisCountOrder(orderType,OrderList);
+        }
+
     }
 }

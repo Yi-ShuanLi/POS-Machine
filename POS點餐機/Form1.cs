@@ -20,7 +20,7 @@ namespace POS點餐機
 
         List<MealItem> FrontSelectedMeals = new List<MealItem>();
         List<string> mainMeal = new List<string>() { 
-            "酥炸魚排$225","香煎雞肉$250","日式醬燒牛$210","台式爆蔥豬$210" 
+            "酥炸魚排$225","香煎雞肉$250","日式醬燒牛$210","台式蔥爆豬$210"
             ,"皇家大排$225","酥炸魚排$225","酥炸雞柳$250","經典牛排$300"
         };
         List<string> sideMeal = new List<string>()
@@ -50,6 +50,7 @@ namespace POS點餐機
             flowLayoutPanel4.CreateCheckBoxs(drink, CheckedChange, ValueChange);
             
             PanelHandler.OnReceivePanel += ReceiveAndShowPanel;
+            comboBox1.SelectedIndex = 0;
         }
         private void CheckedChange(object sender, EventArgs e)
         {
@@ -80,13 +81,19 @@ namespace POS點餐機
                 checkBox.Checked=true;                              
             }
             MealItem newItem = new MealItem(checkBox.Text, (int)numericUpDown.Value);
-            Order.AddOrder(newItem);                    
+            Order.AddOrder(comboBox1.SelectedItem.ToString(),newItem);                    
         }         
         private  void ReceiveAndShowPanel(object sender, (FlowLayoutPanel, string) flowLayoutPanelAndTotal)
         {
             flowLayoutPanel5.Controls.Clear();
             flowLayoutPanel5.Controls.Add(flowLayoutPanelAndTotal.Item1);
             label1.Text = flowLayoutPanelAndTotal.Item2;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Order.RefreshOrder(comboBox1.SelectedItem.ToString());
+
         }
     }
 }

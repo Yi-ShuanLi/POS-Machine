@@ -38,6 +38,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -125,11 +126,33 @@
             this.flowLayoutPanel5.Size = new System.Drawing.Size(420, 589);
             this.flowLayoutPanel5.TabIndex = 3;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "酥炸魚排買二送一",
+            "香煎雞肉買三個打八折",
+            "皇家大排搭配黑糖鮮奶250元",
+            "台式蔥爆豬加鹽酥雞小份就送冬瓜檸檬",
+            "花生麻糬買三個送一盤鮮蔬蛋沙拉",
+            "酥炸雞柳搭配蘿蔔糕打85折",
+            "所有飲料任選三杯打8折",
+            "所有飲料均一價50元",
+            "所有飲料任選三杯送一杯(送最便宜價格)",
+            "全場消費滿399折50",
+            "全場消費打9折"});
+            this.comboBox1.Location = new System.Drawing.Point(741, 647);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(225, 23);
+            this.comboBox1.TabIndex = 4;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1209, 695);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.flowLayoutPanel4);
             this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.flowLayoutPanel5);
@@ -159,6 +182,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
