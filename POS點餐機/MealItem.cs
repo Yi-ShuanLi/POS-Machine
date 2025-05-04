@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace POS點餐機
 {
-    class MealItem
+     class MealItem
     {
         public string Name { get; set; }
         public int Price { get; set; }
