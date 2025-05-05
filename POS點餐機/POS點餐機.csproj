@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StrategyContext.cs" />
     <Compile Include="DisCount.cs" />
     <Compile Include="DiscountTypes\ADiscount.cs" />
     <Compile Include="DiscountTypes\DiscountFactory.cs" />

@@ -20,16 +20,23 @@ namespace POS點餐機
             //所有飲料任選三杯打8折
             //所有飲料均一價50元
             //所有飲料任選三杯送一杯(送最便宜價格)
-            //全場消費滿399折50
+            //全場消費滿499折50
             //全場消費打9折
             items.RemoveAll(x => x.Name.Contains("贈")|| x.Name.Contains("折"));
+            #region 第一版 簡單工廠
             //ADiscount aDiscount= DiscountFactory.CreatDiscount(orderType, items);
             //aDiscount.Discount();
-             orderType = "POS點餐機.DiscountTypes." + orderType;
-            Type type = Type.GetType(orderType);
-            ADiscount aDiscount = (ADiscount)Activator.CreateInstance(type, new object[] { items });
-            aDiscount.Discount();
-
+            #endregion
+            #region 第二版 反射取代簡單工廠
+            //orderType = "POS點餐機.DiscountTypes." + orderType;
+            //Type type = Type.GetType(orderType);
+            //ADiscount aDiscount = (ADiscount)Activator.CreateInstance(type, new object[] { items });
+            //aDiscount.Discount();
+            #endregion
+            #region 第三版 反射+策略模式
+            StrategyContext strategyContext = new StrategyContext(orderType, items);
+            strategyContext.CalcDiscount();
+            #endregion
             ShowPanel.UpdateSelectedOnShowPanel(items);
 
         }
