@@ -95,5 +95,7 @@ namespace POS點餐機
             Order.RefreshOrder(comboBox1.SelectedItem.ToString());
 
         }
+
+       
     }
 }

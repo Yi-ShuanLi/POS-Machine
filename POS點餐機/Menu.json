@@ -1,0 +1,367 @@
+{
+    "Foods":[
+        {"name":"主餐",
+         "itemName":[{"name":"酥炸魚排","price":225 },
+                     {"name":"香煎雞肉","price":250},
+                     {"name":"日式醬燒牛","price":210},
+                     {"name":"台式蔥爆豬","price":210},
+                     {"name":"皇家大排","price":225},
+                     {"name":"酥炸魚排","price":225},
+                     {"name":"酥炸雞柳","price":250},
+                     {"name":"經典牛排","price":300}
+                    ]
+        },
+        {"name":"副餐",
+        "itemName":[{"name":"鮮蔬蛋沙拉","price":80},
+                    {"name":"凱薩雞肉沙拉","price":85},
+                    {"name":"牛番茄燉湯","price":90},
+                    {"name":"昆布海鮮清湯","price":85},
+                    {"name":"雞肉巧達濃湯","price":100}                  
+                   ]
+        },
+        {"name":"點心",
+        "itemName":[{"name":"炸地瓜條","price":60},
+                    {"name":"花生麻糬","price":55},
+                    {"name":"鹽酥雞小份","price":70},
+                    {"name":"芋頭西米露","price":65},
+                    {"name":"黑糖粉粿","price":50},
+                    {"name":"甜不辣拼盤","price":75},
+                    {"name":"蔥抓餅","price":55},
+                    {"name":"蘿蔔糕","price":50}
+                   ]
+       },
+       {"name":"飲料",
+       "itemName":[{"name":"珍珠奶茶","price":60},
+                   {"name":"冬瓜檸檬","price":55},
+                   {"name":"四季春青茶","price":50},
+                   {"name":"紅茶拿鐵","price":65},
+                   {"name":"黑糖鮮奶","price":70},
+                   {"name":"仙草凍飲","price":55},
+                   {"name":"檸檬愛玉","price":50},
+                   {"name":"芒果冰沙","price":65}
+                  ]
+      }
+    ],
+    "Discounts":[
+        {        
+            "Name": "全場消費滿399折50",
+            "Strategy": "消費總額的打折",
+            "Conditions": [
+              {
+                "Product": "ALL",
+                "Quantity": 1,
+                "TotalPrice": 0
+              }
+             
+            ],
+            "Rewards": [
+              {
+                "Product": "",
+                "Quantity": 0,
+                "Price": 0,
+                "TotalPrice": -50,
+                "Percentage": 0
+              }
+            ]
+          },
+          {        
+            "Name": "全場消費打9折",
+            "Strategy": "消費總額的打折",
+            "Conditions": [
+              {
+                "Product": "ALL",
+                "Quantity": 1,
+                "TotalPrice": 0
+              }
+             
+            ],
+            "Rewards": [
+              {
+                "Product": "",
+                "Quantity": 0,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": -0.1
+              }
+            ]
+          },
+          {        
+            "Name": "酥炸魚排買二送一",
+            "Strategy": "特定組合送特定品項",
+            "Conditions": [
+              {
+                "Product": "酥炸魚排",
+                "Quantity": 2,
+                "TotalPrice": 0
+              }
+             
+            ],
+            "Rewards": [
+              {
+                "Product": "酥炸魚排",
+                "Quantity": 1,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": 0
+              }
+            ]
+          },
+          {        
+            "Name": "台式蔥爆豬加鹽酥雞小份就送冬瓜檸檬",
+            "Strategy": "特定組合送特定品項",
+            "Conditions": [
+              {
+                "Product": "台式蔥爆豬",
+                "Quantity": 1,
+                "TotalPrice": 0
+              },
+              {
+                "Product": "鹽酥雞小份",
+                "Quantity": 1,
+                "TotalPrice": 0
+              }
+             
+            ],
+            "Rewards": [
+              {
+                "Product": "冬瓜檸檬",
+                "Quantity": 1,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": 0
+              }
+            ]
+          },
+          {        
+            "Name": "買日式醬燒牛三份加兩份台式蔥爆豬送兩盤甜不辣拼盤",
+            "Strategy": "特定組合送特定品項",
+            "Conditions": [
+              {
+                "Product": "日式醬燒牛",
+                "Quantity": 3,
+                "TotalPrice": 0
+              },
+              {
+                "Product": "台式蔥爆豬",
+                "Quantity": 2,
+                "TotalPrice": 0
+              }
+            ],
+            "Rewards": [
+              {
+                "Product": "甜不辣拼盤",
+                "Quantity": 2,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": 0
+              }
+            ]
+          },
+           
+          {        
+            "Name": "花生麻糬買三個送一盤鮮蔬蛋沙拉",
+            "Strategy": "特定組合送特定品項",
+            "Conditions": [
+              {
+                "Product": "花生麻糬",
+                "Quantity": 3,
+                "TotalPrice": 0
+              }
+             
+            ],
+            "Rewards": [
+              {
+                "Product": "鮮蔬蛋沙拉",
+                "Quantity": 1,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": 0
+              }
+            ]
+          },
+          {        
+            "Name": "所有飲料任選三杯送一杯送最便宜價格",
+            "Strategy": "特定組合送特定品項",
+            "Conditions": [
+              {
+                "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
+                "Quantity": 3,
+                "TotalPrice": 0
+              }
+             
+            ],
+            "Rewards": [
+              {
+                "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
+                "Quantity": 1,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": 0
+              }
+            ]
+          },
+          {        
+            "Name": "指定飲料任選兩杯送一杯送最便宜價格",
+            "Strategy": "特定組合送特定品項",
+            "Conditions": [
+              {
+                "Product": "珍珠奶茶,檸檬愛玉,芒果冰沙",
+                "Quantity": 2,
+                "TotalPrice": 0
+              }
+             
+            ],
+            "Rewards": [
+              {
+                "Product": "珍珠奶茶,檸檬愛玉,芒果冰沙",
+                "Quantity": 1,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": 0
+              }
+            ]
+          },
+          {        
+            "Name": "香煎雞肉買三個打八折",
+            "Strategy": "特定品項的打折",
+            "Conditions": [
+              {
+                "Product": "香煎雞肉",
+                "Quantity": 3,
+                "TotalPrice": 0
+              }
+             
+            ],
+            "Rewards": [
+              {
+                "Product": "",
+                "Quantity": 0,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": -0.2
+              }
+            ]
+          },
+          {        
+            "Name": "酥炸雞柳搭配蘿蔔糕打85折",
+            "Strategy": "特定品項的打折",
+            "Conditions": [
+              {
+                "Product": "酥炸雞柳",
+                "Quantity": 1,
+                "TotalPrice": 0
+              },
+              {
+                "Product": "蘿蔔糕",
+                "Quantity": 1,
+                "TotalPrice": 0
+              }
+             
+            ],
+            "Rewards": [
+              {
+                "Product": "",
+                "Quantity": 0,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": -0.15
+              }
+            ]
+          },
+          {        
+            "Name": "所有飲料任選三杯打8折",
+            "Strategy": "特定品項的打折",
+            "Conditions": [
+                {
+                    "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
+                    "Quantity": 3,
+                    "TotalPrice": 0
+                }
+             
+            ],
+            "Rewards": [
+              {
+                "Product": "",
+                "Quantity": 0,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": -0.2
+              }
+            ]
+          },
+          {        
+            "Name": "皇家大排搭配黑糖鮮奶250元",
+            "Strategy": "特定組合的優惠價",
+            "Conditions": [
+                {
+                    "Product":"皇家大排" ,
+                    "Quantity": 1,
+                    "TotalPrice": 0
+                },
+                {
+                    "Product":"黑糖鮮奶" ,
+                    "Quantity": 1,
+                    "TotalPrice": 0
+                }            
+            ],
+            "Rewards": [
+              {
+                "Product": "",
+                "Quantity": 0,
+                "Price": 250,
+                "TotalPrice": 0,
+                "Percentage": 0
+              }
+            ]
+          },
+          {        
+            "Name": "經典牛排搭配牛番茄燉湯600元",
+            "Strategy": "特定組合的優惠價",
+            "Conditions": [
+                {
+                    "Product":"經典牛排" ,
+                    "Quantity": 2,
+                    "TotalPrice": 0
+                },
+                {
+                    "Product":"牛番茄燉湯" ,
+                    "Quantity": 1,
+                    "TotalPrice": 0
+                }            
+            ],
+            "Rewards": [
+              {
+                "Product": "",
+                "Quantity": 0,
+                "Price": 600,
+                "TotalPrice": 0,
+                "Percentage": 0
+              }
+            ]
+          },
+          {        
+            "Name": "所有飲料均一價50元",
+            "Strategy": "特定組合的優惠價",
+            "Conditions": [
+                {
+                    "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
+                    "Quantity": 1,
+                    "TotalPrice": 0
+                }
+              
+            ],
+            "Rewards": [
+              {
+                
+                "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
+                "Quantity": 0,
+                "Price": 50,
+                "TotalPrice": 0,
+                "Percentage": 0
+              }
+            ]
+          }
+          
+           
+    ]
+}
