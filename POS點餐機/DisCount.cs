@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static POS點餐機.MenuModel;
 
 namespace POS點餐機
 {
     class DisCount
     {
-        public static void DisCountOrder(string orderType,List<MealItem> items)
+        public static void DisCountOrder(DiscountStrategy discountStrategy,List<MealItem> items)
         {
             //酥炸魚排買二送一
             //香煎雞肉買三個打八折
@@ -34,7 +35,7 @@ namespace POS點餐機
             //aDiscount.Discount();
             #endregion
             #region 第三版 反射+策略模式
-            StrategyContext strategyContext = new StrategyContext(orderType, items);
+            StrategyContext strategyContext = new StrategyContext(discountStrategy, items);
             strategyContext.CalcDiscount();
             #endregion
             ShowPanel.UpdateSelectedOnShowPanel(items);

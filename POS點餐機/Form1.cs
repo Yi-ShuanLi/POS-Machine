@@ -1,13 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static POS點餐機.MenuModel;
 
 namespace POS點餐機
 {
@@ -17,40 +22,59 @@ namespace POS點餐機
         {
             InitializeComponent();
         }
-
-        List<MealItem> FrontSelectedMeals = new List<MealItem>();
-        List<string> mainMeal = new List<string>() { 
-            "酥炸魚排$225","香煎雞肉$250","日式醬燒牛$210","台式蔥爆豬$210"
-            ,"皇家大排$225","酥炸魚排$225","酥炸雞柳$250","經典牛排$300"
-        };
-        List<string> sideMeal = new List<string>()
-        {
-            "鮮蔬蛋沙拉$80","凱薩雞肉沙拉$85","牛番茄燉湯$90",
-            "昆布海鮮清湯$85","雞肉巧達濃湯$100"
-           
-        };
-        List<string> snack = new List<string>()
-        {
-            "炸地瓜條$60", "花生麻糬$55", "鹽酥雞小份$70",
-            "芋頭西米露$65", "黑糖粉粿$50", "甜不辣拼盤$75",
-            "蔥抓餅$55", "蘿蔔糕$50"
-        };
-
-        List<string> drink = new List<string>()
-        {
-            "珍珠奶茶$60", "冬瓜檸檬$55", "四季春青茶$50",
-            "紅茶拿鐵$65", "黑糖鮮奶$70", "仙草凍飲$55",
-            "檸檬愛玉$50", "芒果冰沙$65"
-        };        
+     
         private void Form1_Load(object sender, EventArgs e)
         {
-            flowLayoutPanel1.CreateCheckBoxs(mainMeal, CheckedChange,ValueChange);
-            flowLayoutPanel2.CreateCheckBoxs(sideMeal, CheckedChange, ValueChange);
-            flowLayoutPanel3.CreateCheckBoxs(snack, CheckedChange, ValueChange);
-            flowLayoutPanel4.CreateCheckBoxs(drink, CheckedChange, ValueChange);
-            
+            //路徑的string取得
+            String manuPath = ConfigurationManager.AppSettings["MenuPath"].ToString();
+            //從路徑取得json
+            String manuJson = File.ReadAllText(manuPath);
+            //json字串轉 物件 => 反序列化
+            //物件轉換成 json字串 => 序列化
+            MenuModel menuModel = JsonConvert.DeserializeObject<MenuModel>(manuJson);
+            Food[] foods = menuModel.Foods;
+            for (int i = 0; i < foods.Length; i++)
+            {
+                FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
+                flowLayoutPanel.Width = (foodsContainer.Width / (foods.Length/2))-50;
+                flowLayoutPanel.Height= (foodsContainer.Height / 2) - 20;
+                flowLayoutPanel.DisableHorizontalScroll();
+                #region 藏1
+                //FlowLayoutPanel forLabelUse= new FlowLayoutPanel();
+                //forLabelUse.Width = flowLayoutPanel.Width;
+                //forLabelUse.Height = 15;
+                //Label categoryName = new Label();
+                //categoryName.Text = foods[i].name.ToString();
+                //forLabelUse.Controls.Add(categoryName);
+                //flowLayoutPanel.Controls.Add(forLabelUse);
+                #endregion
+                CreateATitlePanel(flowLayoutPanel, foods[i].name.ToString());
+                flowLayoutPanel.CreateMenu(foods[i].itemName);
+                #region 藏2
+                //for (int j=0;j< foods[i].itemName.Length; j++)
+                //{
+                //    FlowLayoutPanel minPanel = new FlowLayoutPanel();
+                //    minPanel.Width = flowLayoutPanel.Width;
+                //    minPanel.Height = 30;
+                //    CheckBox checkBox = new CheckBox();
+                //    String mealName = foods[i].itemName[j].name;
+                //    String mealPrice = foods[i].itemName[j].price.ToString();
+                //    checkBox.Text = mealName + "$" + mealPrice;
+                //    NumericUpDown numericUpDown = new NumericUpDown();
+                //    numericUpDown.Width = 40;
+                //    minPanel.Controls.Add(checkBox);
+                //    minPanel.Controls.Add(numericUpDown);
+                //    flowLayoutPanel.Controls.Add(minPanel);
+                //}
+                #endregion
+                foodsContainer.Controls.Add(flowLayoutPanel);
+            }           
             PanelHandler.OnReceivePanel += ReceiveAndShowPanel;
-            comboBox1.SelectedIndex = 0;
+            discountComboBox.DataSource = menuModel.Discounts;
+            discountComboBox.DisplayMember = "Name";
+
+
+
         }
         private void CheckedChange(object sender, EventArgs e)
         {
@@ -81,7 +105,7 @@ namespace POS點餐機
                 checkBox.Checked=true;                              
             }
             MealItem newItem = new MealItem(checkBox.Text, (int)numericUpDown.Value);
-            Order.AddOrder(comboBox1.SelectedItem.ToString(),newItem);                    
+            Order.AddOrder((DiscountStrategy)discountComboBox.SelectedValue,newItem);                    
         }         
         private  void ReceiveAndShowPanel(object sender, (FlowLayoutPanel, string) flowLayoutPanelAndTotal)
         {
@@ -90,12 +114,25 @@ namespace POS點餐機
             label1.Text = flowLayoutPanelAndTotal.Item2;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void DiscountComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Order.RefreshOrder(comboBox1.SelectedItem.ToString());
+            if(discountComboBox.SelectedValue is DiscountStrategy discount)
+            {
+                Order.RefreshOrder(discount);
+            }
+
 
         }
 
-       
+       private void CreateATitlePanel(FlowLayoutPanel flowLayoutPanel, String titleName)
+        {
+            FlowLayoutPanel forLabelUse = new FlowLayoutPanel();
+            forLabelUse.Width = flowLayoutPanel.Width;
+            forLabelUse.Height = 15;
+            Label categoryName = new Label();
+            categoryName.Text = titleName;
+            forLabelUse.Controls.Add(categoryName);
+            flowLayoutPanel.Controls.Add(forLabelUse);
+        }
     }
 }

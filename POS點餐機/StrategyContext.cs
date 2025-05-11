@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static POS點餐機.MenuModel;
 
 namespace POS點餐機
 {
@@ -11,10 +12,10 @@ namespace POS點餐機
     {
         private ADiscount aDiscount;
         
-        public StrategyContext(string orderType, List<MealItem> items)
+        public StrategyContext(DiscountStrategy discountStrategy, List<MealItem> items)
         {
-            orderType = "POS點餐機.DiscountTypes." + orderType;
-            Type type = Type.GetType(orderType);
+            string strategyType = "POS點餐機.Strategies." +discountStrategy.Strategy;
+            Type type = Type.GetType(strategyType);
             aDiscount = (ADiscount)Activator.CreateInstance(type, new object[] { items });
         }
         public void CalcDiscount()

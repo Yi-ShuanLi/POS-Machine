@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static POS點餐機.MenuModel;
 
 
 
@@ -16,7 +17,7 @@ namespace POS點餐機
         public static List<MealItem> OrderList = new List<MealItem>();
        
        
-        public static void AddOrder(string orderType,MealItem newItem)
+        public static void AddOrder(DiscountStrategy discountStrategy, MealItem newItem)
         {
             MealItem item = OrderList.FirstOrDefault(x => x.Name == newItem.Name);
             if (item == null)
@@ -31,12 +32,12 @@ namespace POS點餐機
             {
                 item.Quantity = newItem.Quantity;                            
             }
-            DisCount.DisCountOrder(orderType, OrderList);
+            DisCount.DisCountOrder(discountStrategy, OrderList);
         }
 
-        public static void RefreshOrder(string orderType)
+        public static void RefreshOrder(DiscountStrategy disCount)
         {
-            DisCount.DisCountOrder(orderType,OrderList);
+            DisCount.DisCountOrder(disCount, OrderList);
         }
 
     }

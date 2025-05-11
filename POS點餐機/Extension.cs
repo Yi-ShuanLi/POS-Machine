@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static POS點餐機.MenuModel;
+
 
 namespace POS點餐機
 {
@@ -95,7 +97,35 @@ namespace POS點餐機
             }
         }
       
+        public static void DisableHorizontalScroll(this FlowLayoutPanel flowLayoutPanel)
+        {
+            flowLayoutPanel.AutoScroll = false;
+            flowLayoutPanel.HorizontalScroll.Enabled = false;
+            flowLayoutPanel.HorizontalScroll.Visible = false;
+            flowLayoutPanel.HorizontalScroll.Maximum = 0;
+            flowLayoutPanel.AutoScroll = true;
+        }
 
+        public static void  CreateMenu(this FlowLayoutPanel flowLayoutPanel, Itemname [] itemnames )
+        {
+           
+            for (int j = 0; j < itemnames.Length; j++)
+            {
+                FlowLayoutPanel minPanel = new FlowLayoutPanel();
+                minPanel.Width = flowLayoutPanel.Width;
+                minPanel.Height = 30;
+                CheckBox checkBox = new CheckBox();
+                String mealName = itemnames[j].name;
+                String mealPrice = itemnames[j].price.ToString();
+                checkBox.Text = mealName + "$" + mealPrice;
+                NumericUpDown numericUpDown = new NumericUpDown();
+                numericUpDown.Width = 40;
+                minPanel.Controls.Add(checkBox);
+                minPanel.Controls.Add(numericUpDown);
+                flowLayoutPanel.Controls.Add(minPanel);
+            }
+            
+        }
 
     }
 }
