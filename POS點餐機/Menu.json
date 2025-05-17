@@ -50,13 +50,14 @@
               {
                 "Product": "ALL",
                 "Quantity": 1,
-                "TotalPrice": 0
+                "TotalPrice": 399
               }
              
             ],
             "Rewards": [
               {
                 "Product": "",
+                "RewardsType":"",
                 "Quantity": 0,
                 "Price": 0,
                 "TotalPrice": -50,
@@ -78,6 +79,7 @@
             "Rewards": [
               {
                 "Product": "",
+                "RewardsType":"",
                 "Quantity": 0,
                 "Price": 0,
                 "TotalPrice": 0,
@@ -99,6 +101,7 @@
             "Rewards": [
               {
                 "Product": "酥炸魚排",
+                "RewardsType":"",
                 "Quantity": 1,
                 "Price": 0,
                 "TotalPrice": 0,
@@ -107,7 +110,7 @@
             ]
           },
           {        
-            "Name": "台式蔥爆豬加鹽酥雞小份就送冬瓜檸檬",
+            "Name": "台式蔥爆豬加鹽酥雞小份就送冬瓜檸檬和芋頭西米露",
             "Strategy": "特定組合送特定品項",
             "Conditions": [
               {
@@ -125,7 +128,16 @@
             "Rewards": [
               {
                 "Product": "冬瓜檸檬",
-                "Quantity": 1,
+                "RewardsType":"",
+                "Quantity": 2,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": 0
+              },
+              {
+                "Product": "芋頭西米露",
+                "RewardsType":"",
+                "Quantity": 2,
                 "Price": 0,
                 "TotalPrice": 0,
                 "Percentage": 0
@@ -150,6 +162,7 @@
             "Rewards": [
               {
                 "Product": "甜不辣拼盤",
+                "RewardsType":"",
                 "Quantity": 2,
                 "Price": 0,
                 "TotalPrice": 0,
@@ -172,6 +185,7 @@
             "Rewards": [
               {
                 "Product": "鮮蔬蛋沙拉",
+                "RewardsType":"",
                 "Quantity": 1,
                 "Price": 0,
                 "TotalPrice": 0,
@@ -188,11 +202,11 @@
                 "Quantity": 3,
                 "TotalPrice": 0
               }
-             
             ],
             "Rewards": [
               {
                 "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
+                "RewardsType":"Min",
                 "Quantity": 1,
                 "Price": 0,
                 "TotalPrice": 0,
@@ -201,7 +215,7 @@
             ]
           },
           {        
-            "Name": "指定飲料任選兩杯送一杯送最便宜價格",
+            "Name": "指定飲料任選兩杯送一杯送最貴價格",
             "Strategy": "特定組合送特定品項",
             "Conditions": [
               {
@@ -214,6 +228,30 @@
             "Rewards": [
               {
                 "Product": "珍珠奶茶,檸檬愛玉,芒果冰沙",
+                "RewardsType":"Max",
+                "Quantity": 1,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": 0
+              }
+            ]
+          },
+           {        
+            "Name": "所有飲料任選三杯送一杯Random",
+            "Strategy": "特定組合送特定品項",
+            "Conditions": [
+              {
+                "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
+                "Quantity": 3,
+                "TotalPrice": 0
+              }
+                
+             
+            ],
+            "Rewards": [
+              {
+                "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
+                "RewardsType":"Any",
                 "Quantity": 1,
                 "Price": 0,
                 "TotalPrice": 0,
@@ -235,6 +273,7 @@
             "Rewards": [
               {
                 "Product": "",
+                "RewardsType":"",
                 "Quantity": 0,
                 "Price": 0,
                 "TotalPrice": 0,
@@ -261,6 +300,7 @@
             "Rewards": [
               {
                 "Product": "",
+                "RewardsType":"",
                 "Quantity": 0,
                 "Price": 0,
                 "TotalPrice": 0,
@@ -282,6 +322,7 @@
             "Rewards": [
               {
                 "Product": "",
+                "RewardsType":"",
                 "Quantity": 0,
                 "Price": 0,
                 "TotalPrice": 0,
@@ -307,6 +348,7 @@
             "Rewards": [
               {
                 "Product": "",
+                "RewardsType":"",
                 "Quantity": 0,
                 "Price": 250,
                 "TotalPrice": 0,
@@ -332,6 +374,7 @@
             "Rewards": [
               {
                 "Product": "",
+                "RewardsType":"",
                 "Quantity": 0,
                 "Price": 600,
                 "TotalPrice": 0,
@@ -354,6 +397,7 @@
               {
                 
                 "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
+                "RewardsType":"",
                 "Quantity": 0,
                 "Price": 50,
                 "TotalPrice": 0,

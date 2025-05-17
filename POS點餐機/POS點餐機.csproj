@@ -51,6 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MenuModel.cs" />
+    <Compile Include="Strategies\ADiscountStrategy.cs" />
+    <Compile Include="Strategies\消費總額的打折.cs" />
+    <Compile Include="Strategies\特定品項的打折.cs" />
+    <Compile Include="Strategies\特定組合的優惠價.cs" />
+    <Compile Include="Strategies\特定組合送特定品項.cs" />
     <Compile Include="StrategyContext.cs" />
     <Compile Include="DisCount.cs" />
     <Compile Include="DiscountTypes\ADiscount.cs" />
@@ -105,8 +110,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Strategies\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

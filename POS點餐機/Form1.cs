@@ -49,7 +49,7 @@ namespace POS點餐機
                 //flowLayoutPanel.Controls.Add(forLabelUse);
                 #endregion
                 CreateATitlePanel(flowLayoutPanel, foods[i].name.ToString());
-                flowLayoutPanel.CreateMenu(foods[i].itemName);
+                flowLayoutPanel.CreateMenu(foods[i].itemName, CheckedChange, ValueChange);
                 #region 藏2
                 //for (int j=0;j< foods[i].itemName.Length; j++)
                 //{

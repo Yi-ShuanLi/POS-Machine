@@ -1,4 +1,5 @@
 ﻿using POS點餐機.DiscountTypes;
+using POS點餐機.Strategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +11,17 @@ namespace POS點餐機
 {
     class StrategyContext
     {
-        private ADiscount aDiscount;
+        private ADiscountStrategy discountStrategy;
         
-        public StrategyContext(DiscountStrategy discountStrategy, List<MealItem> items)
+        public StrategyContext(DiscountStrategy discountStrategySelected, List<MealItem> items)
         {
-            string strategyType = "POS點餐機.Strategies." +discountStrategy.Strategy;
+            string strategyType = "POS點餐機.Strategies." + discountStrategySelected.Strategy;
             Type type = Type.GetType(strategyType);
-            aDiscount = (ADiscount)Activator.CreateInstance(type, new object[] { items });
+            discountStrategy = (ADiscountStrategy)Activator.CreateInstance(type, new object[] { discountStrategySelected, items });
         }
         public void CalcDiscount()
         {
-            aDiscount.Discount();
+            discountStrategy.Discount();
         }
     }
 }

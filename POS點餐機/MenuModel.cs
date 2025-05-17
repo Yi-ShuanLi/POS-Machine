@@ -42,6 +42,7 @@ namespace POS點餐機
         public class Reward
         {
             public string Product { get; set; }
+            public string RewardsType { get; set; }
             public int Quantity { get; set; }
             public int Price { get; set; }
             public int TotalPrice { get; set; }

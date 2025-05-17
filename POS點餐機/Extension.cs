@@ -106,7 +106,7 @@ namespace POS點餐機
             flowLayoutPanel.AutoScroll = true;
         }
 
-        public static void  CreateMenu(this FlowLayoutPanel flowLayoutPanel, Itemname [] itemnames )
+        public static void  CreateMenu(this FlowLayoutPanel flowLayoutPanel, Itemname [] itemnames , EventHandler checkedChanged, EventHandler valueChanged)
         {
            
             for (int j = 0; j < itemnames.Length; j++)
@@ -118,8 +118,10 @@ namespace POS點餐機
                 String mealName = itemnames[j].name;
                 String mealPrice = itemnames[j].price.ToString();
                 checkBox.Text = mealName + "$" + mealPrice;
+                checkBox.CheckedChanged += checkedChanged;
                 NumericUpDown numericUpDown = new NumericUpDown();
                 numericUpDown.Width = 40;
+                numericUpDown.ValueChanged += valueChanged;
                 minPanel.Controls.Add(checkBox);
                 minPanel.Controls.Add(numericUpDown);
                 flowLayoutPanel.Controls.Add(minPanel);
