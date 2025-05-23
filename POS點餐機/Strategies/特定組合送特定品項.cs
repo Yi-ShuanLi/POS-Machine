@@ -53,6 +53,7 @@ namespace POS點餐機.Strategies
 
             List<ConditionGroup> availableConditions = items.Select(x =>
             {
+                
                 var condition = conditions.FirstOrDefault(y => y.Names.Contains(x.Name));
                 if (condition == null)
                     return null;
@@ -72,18 +73,31 @@ namespace POS點餐機.Strategies
                 return;
 
             List<int> conditionFreeCount = new List<int>();
-            int passConditionCount = conditionGrops.Select(x =>
+
+            conditionFreeCount = conditionGrops.Select(x =>
             {
                 int GroupSum = x.Sum(y => y.BuyCount);
                 int count = GroupSum / x.Key.ConditionCount;
-                conditionFreeCount.Add(count);
-                return count > 0;
-            }).Where(x => x).Count();
+                return count;
+            }).ToList();
 
-            if (passConditionCount != conditions.Count)
-                return;
+            if (conditionFreeCount.Contains(0))
+                return ;
 
             int freeCount = conditionFreeCount.Min();
+
+            //int passConditionCount = conditionGrops.Select(x =>
+            //{
+            //    int GroupSum = x.Sum(y => y.BuyCount);
+            //    int count = GroupSum / x.Key.ConditionCount;
+            //    conditionFreeCount.Add(count);
+            //    return count > 0;
+            //}).Where(x => x == true).Count();
+
+            //if (passConditionCount != conditions.Count)
+            //    return;
+
+            //int freeCount = conditionFreeCount.Min();
 
 
             // 開始撰寫可以贈送的邏輯
@@ -186,7 +200,7 @@ namespace POS點餐機.Strategies
             //    int freeNum = anyQuantitySubtotal[i] / anyQuantityRequired[i];
             //    freeQuantity.Add(freeNum);
             //}
-            //if (freeQuantity.Count == 0)
+            //if (freeQuantity.Count != conditions.Count)
             //{
             //    return;
             //}

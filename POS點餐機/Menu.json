@@ -148,16 +148,17 @@
             "Name": "買日式醬燒牛三份加兩份台式蔥爆豬送兩盤甜不辣拼盤",
             "Strategy": "特定組合送特定品項",
             "Conditions": [
+               {
+                "Product": "台式蔥爆豬",
+                "Quantity": 2,
+                "TotalPrice": 0
+              },
               {
                 "Product": "日式醬燒牛",
                 "Quantity": 3,
                 "TotalPrice": 0
-              },
-              {
-                "Product": "台式蔥爆豬",
-                "Quantity": 2,
-                "TotalPrice": 0
               }
+             
             ],
             "Rewards": [
               {
@@ -202,11 +203,39 @@
                 "Quantity": 3,
                 "TotalPrice": 0
               }
+              
             ],
             "Rewards": [
               {
                 "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
                 "RewardsType":"Min",
+                "Quantity": 1,
+                "Price": 0,
+                "TotalPrice": 0,
+                "Percentage": 0
+              }
+            ]
+          },
+           {        
+            "Name": "任選主餐3份加飲料3份就送點心3份",
+            "Strategy": "特定組合送特定品項",
+            "Conditions": [
+              {
+                "Product": "酥炸魚排,香煎雞肉,日式醬燒牛,台式蔥爆豬,皇家大排,酥炸魚排,酥炸雞柳,經典牛排",
+                "Quantity": 3,
+                "TotalPrice": 0
+              },
+               {
+                "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
+                "Quantity": 3,
+                "TotalPrice": 0
+              }
+              
+            ],
+            "Rewards": [
+              {
+                "Product": "炸地瓜條,花生麻糬,鹽酥雞小份,芋頭西米露,黑糖粉粿,甜不辣拼盤,蔥抓餅,蘿蔔糕",
+                "RewardsType":"Any",
                 "Quantity": 1,
                 "Price": 0,
                 "TotalPrice": 0,
@@ -396,10 +425,33 @@
             "Rewards": [
               {
                 
-                "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
+                "Product": "",
                 "RewardsType":"",
                 "Quantity": 0,
                 "Price": 50,
+                "TotalPrice": 0,
+                "Percentage": 0
+              }
+            ]
+          },
+          {        
+            "Name": "所有飲料任選4杯，總額160元(每杯40元)",
+            "Strategy": "特定組合的優惠價",
+            "Conditions": [
+                {
+                    "Product": "珍珠奶茶,冬瓜檸檬,四季春青茶,紅茶拿鐵,黑糖鮮奶,仙草凍飲,檸檬愛玉,芒果冰沙",
+                    "Quantity": 4,
+                    "TotalPrice": 0
+                }
+              
+            ],
+            "Rewards": [
+              {
+                
+                "Product": "",
+                "RewardsType":"",
+                "Quantity": 0,
+                "Price": 160,
                 "TotalPrice": 0,
                 "Percentage": 0
               }
