@@ -1,0 +1,226 @@
+{
+    "Foods": [
+        {
+            "name": "主餐",
+            "itemName": [
+                {
+                    "name": "大麥克",
+                    "price": 109
+                },
+                {
+                    "name": "麥香雞",
+                    "price": 75
+                },
+                {
+                    "name": "雙層牛肉吉事堡",
+                    "price": 89
+                },
+                {
+                    "name": "麥克雞塊(6塊)",
+                    "price": 95
+                },
+                {
+                    "name": "麥香魚",
+                    "price": 79
+                }
+            ]
+        },
+        {
+            "name": "副餐",
+            "itemName": [
+                {
+                    "name": "薯條(中)",
+                    "price": 50
+                },
+                {
+                    "name": "勁辣雞腿排",
+                    "price": 65
+                },
+                {
+                    "name": "玉米杯",
+                    "price": 35
+                }
+            ]
+        },
+        {
+            "name": "點心",
+            "itemName": [
+                {
+                    "name": "蘋果派",
+                    "price": 38
+                },
+                {
+                    "name": "OREO冰炫風",
+                    "price": 60
+                },
+                {
+                    "name": "冰淇淋甜筒",
+                    "price": 25
+                }
+            ]
+        },
+        {
+            "name": "飲料",
+            "itemName": [
+                {
+                    "name": "可樂",
+                    "price": 38
+                },
+                {
+                    "name": "雪碧",
+                    "price": 38
+                },
+                {
+                    "name": "冰紅茶",
+                    "price": 38
+                },
+                {
+                    "name": "柳橙汁",
+                    "price": 42
+                },
+                {
+                    "name": "熱紅茶",
+                    "price": 38
+                }
+            ]
+        }
+    ],
+    "Discounts": [
+        {
+            "Name": "全場消費滿300折30元",
+            "Strategy": "消費總額的打折",
+            "Conditions": [
+                {
+                    "Product": "ALL",
+                    "Quantity": 1,
+                    "TotalPrice": 300
+                }
+            ],
+            "Rewards": [
+                {
+                    "Product": "",
+                    "RewardsType": "",
+                    "Quantity": 0,
+                    "Price": 0,
+                    "TotalPrice": -30,
+                    "Percentage": 0
+                }
+            ]
+        },
+        {
+            "Name": "大麥克買二送一",
+            "Strategy": "特定組合送特定品項",
+            "Conditions": [
+                {
+                    "Product": "大麥克",
+                    "Quantity": 2,
+                    "TotalPrice": 0
+                }
+            ],
+            "Rewards": [
+                {
+                    "Product": "OREO冰炫風",
+                    "RewardsType": "",
+                    "Quantity": 1,
+                    "Price": 0,
+                    "TotalPrice": 0,
+                    "Percentage": 0
+                }
+            ]
+        },
+        {
+            "Name": "麥香雞加薯條送可樂",
+            "Strategy": "特定組合送特定品項",
+            "Conditions": [
+                {
+                    "Product": "麥香雞",
+                    "Quantity": 1,
+                    "TotalPrice": 0
+                },
+                {
+                    "Product": "薯條(中)",
+                    "Quantity": 1,
+                    "TotalPrice": 0
+                }
+            ],
+            "Rewards": [
+                {
+                    "Product": "可樂",
+                    "RewardsType": "",
+                    "Quantity": 1,
+                    "Price": 0,
+                    "TotalPrice": 0,
+                    "Percentage": 0
+                }
+            ]
+        },
+        {
+            "Name": "冰炫風買三個打九折",
+            "Strategy": "特定品項的打折",
+            "Conditions": [
+                {
+                    "Product": "OREO冰炫風",
+                    "Quantity": 3,
+                    "TotalPrice": 0
+                }
+            ],
+            "Rewards": [
+                {
+                    "Product": "",
+                    "RewardsType": "",
+                    "Quantity": 0,
+                    "Price": 0,
+                    "TotalPrice": 0,
+                    "Percentage": -0.1
+                }
+            ]
+        },
+        {
+            "Name": "所有飲料任選三杯送一杯（最便宜）",
+            "Strategy": "特定組合送特定品項",
+            "Conditions": [
+                {
+                    "Product": "可樂,雪碧,冰紅茶,柳橙汁,熱紅茶",
+                    "Quantity": 3,
+                    "TotalPrice": 0
+                }
+            ],
+            "Rewards": [
+                {
+                    "Product": "可樂,雪碧,冰紅茶,柳橙汁,熱紅茶",
+                    "RewardsType": "Min",
+                    "Quantity": 1,
+                    "Price": 0,
+                    "TotalPrice": 0,
+                    "Percentage": 0
+                }
+            ]
+        },
+        {
+            "Name": "任選主餐3份加飲料3份就送點心2份",
+            "Strategy": "特定組合送特定品項",
+            "Conditions": [
+                {
+                    "Product": "大麥克,麥香雞,雙層牛肉吉事堡,麥克雞塊(6塊),麥香魚",
+                    "Quantity": 3,
+                    "TotalPrice": 0
+                },
+                {
+                    "Product": "可樂,雪碧,冰紅茶,柳橙汁,熱紅茶",
+                    "Quantity": 3,
+                    "TotalPrice": 0
+                }
+            ],
+            "Rewards": [
+                {
+                    "Product": "蘋果派,OREO冰炫風,冰淇淋甜筒",
+                    "RewardsType": "Any",
+                    "Quantity": 2,
+                    "Price": 0,
+                    "TotalPrice": 0,
+                    "Percentage": 0
+                }
+            ]
+        }
+    ]
+}
