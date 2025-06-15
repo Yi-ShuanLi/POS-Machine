@@ -74,6 +74,12 @@ namespace POS點餐機
             discountComboBox.DisplayMember = "Name";
 
 
+          
+            
+        }
+
+        private void Test(string str = "a",int number2 = 20)
+        {
 
         }
         private void CheckedChange(object sender, EventArgs e)
