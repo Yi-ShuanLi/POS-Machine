@@ -1,0 +1,2 @@
+DisCount 第57列
+Form1_Load.ReceiveAndShowPanel好像可以不用傳入panel?

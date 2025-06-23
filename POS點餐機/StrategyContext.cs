@@ -46,19 +46,31 @@ namespace POS點餐機
            
             return response;
         }
+        /// <summary>
+        /// 依照是否有AI推薦去執行折扣項，當初建構式的 List<MealItem> items 與本頁this.items 共同使用已經是callByReference
+        /// </summary>
+        /// <returns></returns>
         public async Task CalcDiscount()
         {
            
             if (this.AIRecommand)
             {
+                //取得AI推薦後的結果
                 AgentResult result = await RunAIRecommand(items);
                 if(result.CanRunTool)
                 {
+                    //把回傳的 AgentResult(精煉response後的結果tool) 轉換成原本點餐機架構
                     BestChoiceArgs args = (BestChoiceArgs)result.Tool.Apply();
+                    //依照折扣類別，去產生出相應的類別名稱
                     Type type = Type.GetType("POS點餐機.Strategies." + args.strategy);
+                    //去MenuData 依照args折扣類別名稱去提取DiscountStrategy物件
                     this.discountStrategySelected = MenuData.Discounts.First(x => x.Name == args.plan_name);
-                    ADiscountStrategy discountStrategy = (ADiscountStrategy)Activator.CreateInstance(type, new object[] { discountStrategySelected, items });
+                    //建立 ADiscountStrategy物件，items 一樣與ADiscountStrategy.items共同使用 callByReference
+                    ADiscountStrategy discountStrategy = (ADiscountStrategy)Activator.CreateInstance(type, new object[] {discountStrategySelected, items});
+                    //進行計算並新增items折扣方案
                     discountStrategy.Discount();
+                    //把AI推薦結果交給 AIRecommandHandler.Recommand 方法
+                    //丟到Form1的AIRecommandHandler_OnReceiveRecommand去進行推薦原因及UI自動選取
                     AIRecommandHandler.Recommand(args);
                 }
                
@@ -66,12 +78,9 @@ namespace POS點餐機
             else
             {
                 Type type = Type.GetType(strategy);
-
-                ADiscountStrategy discountStrategy = (ADiscountStrategy)Activator.CreateInstance(type, new object[] { discountStrategySelected, items });
+                ADiscountStrategy discountStrategy = (ADiscountStrategy)Activator.CreateInstance(type, new object[] { discountStrategySelected, items});
                 discountStrategy.Discount();
-            }
-
-              
+            }              
         }
     }
 }

@@ -11,6 +11,7 @@ using static POS點餐機.MenuModel;
 
 namespace POS點餐機.Models
 {
+    //為何 class名稱不用static ?
     internal class MenuData
     {
         public static Food[] Foods;

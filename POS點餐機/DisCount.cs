@@ -39,21 +39,25 @@ namespace POS點餐機
             if (orderRequestModel.Items.Count != 0)
             {
                 StrategyContext strategyContext = null;
-                if (orderRequestModel.AIRecommend)
+                if (orderRequestModel.AIRecommend)//當有AI推薦時執行
                 {
+                    //參數使用CallByReference 丟進去的建立物件
                     strategyContext = new StrategyContext(orderRequestModel.Items);
                 }
                 else
                 {
                     strategyContext = new StrategyContext(orderRequestModel.DiscountStrategy, orderRequestModel.Items);
                 }
-
+                //參數使用CallByReference 丟進去的 orderRequestModel.Items 會被增加 折扣
                 await strategyContext.CalcDiscount();
             }
-          
-            #endregion
-            ShowPanel.UpdateSelectedOnShowPanel(orderRequestModel.Items);
 
+            #endregion
+            //show 出目前選擇所選擇的餐點，
+            //因為先前有CallByReference 把StrategyContext物件的成立，
+            //所以參數orderRequestModel.Items已增加了折扣項
+            ShowPanel.UpdateSelectedOnShowPanel(orderRequestModel.Items);
+            Console.WriteLine("");
         }
     }
 }

@@ -106,6 +106,13 @@ namespace POS點餐機
             flowLayoutPanel.AutoScroll = true;
         }
 
+        /// <summary>
+        /// 產生各類餐點的所有細項
+        /// </summary>
+        /// <param name="flowLayoutPanel">每個類別的Panel 這是call by reference</param>
+        /// <param name="itemnames">餐點的array，Itemname []</param>
+        /// <param name="checkedChanged">監控每道菜是否被勾選變化，與CheckBox綁定</param>
+        /// <param name="valueChanged">監控每道菜的數量變化，與NumericUpDown綁定</param>
         public static void  CreateMenu(this FlowLayoutPanel flowLayoutPanel, Itemname [] itemnames , EventHandler checkedChanged, EventHandler valueChanged)
         {
            
