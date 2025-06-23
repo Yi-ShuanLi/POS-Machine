@@ -1,4 +1,5 @@
 ﻿using POS點餐機.DiscountTypes;
+using POS點餐機.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace POS點餐機
 {
     class DisCount
     {
-        public static void DisCountOrder(DiscountStrategy discountStrategy,List<MealItem> items)
+        public static async Task DisCountOrder(OrderRequestModel orderRequestModel)
         {
             //酥炸魚排買二送一
             //香煎雞肉買三個打八折
@@ -23,7 +24,7 @@ namespace POS點餐機
             //所有飲料任選三杯送一杯(送最便宜價格)
             //全場消費滿499折50
             //全場消費打9折
-            items.RemoveAll(x => x.Name.Contains("贈")|| x.Name.Contains("折"));
+            orderRequestModel.Items.RemoveAll(x => x.Name.Contains("贈")|| x.Name.Contains("折"));
             #region 第一版 簡單工廠
             //ADiscount aDiscount= DiscountFactory.CreatDiscount(orderType, items);
             //aDiscount.Discount();
@@ -35,10 +36,23 @@ namespace POS點餐機
             //aDiscount.Discount();
             #endregion
             #region 第三版 反射+策略模式
-            StrategyContext strategyContext = new StrategyContext(discountStrategy, items);
-            strategyContext.CalcDiscount();
+            if (orderRequestModel.Items.Count != 0)
+            {
+                StrategyContext strategyContext = null;
+                if (orderRequestModel.AIRecommend)
+                {
+                    strategyContext = new StrategyContext(orderRequestModel.Items);
+                }
+                else
+                {
+                    strategyContext = new StrategyContext(orderRequestModel.DiscountStrategy, orderRequestModel.Items);
+                }
+
+                await strategyContext.CalcDiscount();
+            }
+          
             #endregion
-            ShowPanel.UpdateSelectedOnShowPanel(items);
+            ShowPanel.UpdateSelectedOnShowPanel(orderRequestModel.Items);
 
         }
     }

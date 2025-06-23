@@ -5,14 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 合併AI練習.Tools
+namespace POS點餐機.AI.Tools
 {
     public abstract class ATool
     {
         protected string jsonString;
-        public ATool(object json) {
+        public ATool(object json)
+        {
             jsonString = JsonConvert.SerializeObject(json);
         }
-        public abstract void Apply();
+        public abstract object Apply();
     }
 }

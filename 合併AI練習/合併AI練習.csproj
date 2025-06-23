@@ -98,6 +98,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AIAgent.cs" />
+    <Compile Include="AgentHandler.cs" />
     <Compile Include="Common\AIRequest.cs" />
     <Compile Include="Common\AIRequestArgs.cs" />
     <Compile Include="Common\AIResponse.cs" />

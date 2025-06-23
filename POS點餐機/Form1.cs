@@ -1,4 +1,7 @@
 ﻿using Newtonsoft.Json;
+using POS點餐機.AI.Tools.DetermineBestChoice;
+using POS點餐機.EventHandlers;
+using POS點餐機.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,14 +28,7 @@ namespace POS點餐機
      
         private void Form1_Load(object sender, EventArgs e)
         {
-            //路徑的string取得
-            String manuPath = ConfigurationManager.AppSettings["MenuPath"].ToString();
-            //從路徑取得json
-            String manuJson = File.ReadAllText(manuPath);
-            //json字串轉 物件 => 反序列化
-            //物件轉換成 json字串 => 序列化
-            MenuModel menuModel = JsonConvert.DeserializeObject<MenuModel>(manuJson);
-            Food[] foods = menuModel.Foods;
+            Food[] foods = MenuData.Foods;
             for (int i = 0; i < foods.Length; i++)
             {
                 FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
@@ -70,18 +66,17 @@ namespace POS點餐機
                 foodsContainer.Controls.Add(flowLayoutPanel);
             }           
             PanelHandler.OnReceivePanel += ReceiveAndShowPanel;
-            discountComboBox.DataSource = menuModel.Discounts;
+            AIRecommandHandler.OnReceiveRecommand += AIRecommandHandler_OnReceiveRecommand; 
+            discountComboBox.DataSource = MenuData.Discounts;
             discountComboBox.DisplayMember = "Name";
-
-
-          
-            
         }
 
-        private void Test(string str = "a",int number2 = 20)
+        private void AIRecommandHandler_OnReceiveRecommand(object sender, BestChoiceArgs e)
         {
-
+            reson_Lab.Text = e.reason;
+            discountComboBox.SelectedItem = MenuData.Discounts.First(x => x.Name == e.plan_name);
         }
+
         private void CheckedChange(object sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender;
@@ -97,7 +92,7 @@ namespace POS點餐機
                 numericUpDown.Value = 0;
             }            
         }
-        private void ValueChange(object sender, EventArgs e)
+        private async void ValueChange(object sender, EventArgs e)
         {
             NumericUpDown numericUpDown = (NumericUpDown)sender;
             FlowLayoutPanel flowLayoutPanel = (FlowLayoutPanel)numericUpDown.Parent;
@@ -110,8 +105,12 @@ namespace POS點餐機
             {
                 checkBox.Checked=true;                              
             }
+            // enableAIRecommend_checkbox.Checked
+            bool aiRecommend = enableAIRecommend_checkbox.Checked;
             MealItem newItem = new MealItem(checkBox.Text, (int)numericUpDown.Value);
-            Order.AddOrder((DiscountStrategy)discountComboBox.SelectedValue,newItem);                    
+            DiscountStrategy discountStrategy = (DiscountStrategy)discountComboBox.SelectedValue;
+            OrderRequestModel orderRequestModel = new OrderRequestModel(discountStrategy, newItem, aiRecommend);
+            await Order.AddOrder(orderRequestModel);                    
         }         
         private  void ReceiveAndShowPanel(object sender, (FlowLayoutPanel, string) flowLayoutPanelAndTotal)
         {
@@ -120,11 +119,13 @@ namespace POS點餐機
             label1.Text = flowLayoutPanelAndTotal.Item2;
         }
 
-        private void DiscountComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private async void DiscountComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(discountComboBox.SelectedValue is DiscountStrategy discount)
+            bool aiRecommend = enableAIRecommend_checkbox.Checked;
+            
+            if (discountComboBox.SelectedValue is DiscountStrategy discount)
             {
-                Order.RefreshOrder(discount);
+               await Order.RefreshOrder(new OrderRequestModel(discount, aiRecommend));
             }
 
 

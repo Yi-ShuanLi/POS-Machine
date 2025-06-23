@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POS點餐機.Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -17,27 +18,29 @@ namespace POS點餐機
         public static List<MealItem> OrderList = new List<MealItem>();
        
        
-        public static void AddOrder(DiscountStrategy discountStrategy, MealItem newItem)
+        public static async Task AddOrder(OrderRequestModel requestModel)
         {
-            MealItem item = OrderList.FirstOrDefault(x => x.Name == newItem.Name);
+            MealItem item = OrderList.FirstOrDefault(x => x.Name == requestModel.OrderItem.Name);
             if (item == null)
             {
-                OrderList.Add(newItem);
+                OrderList.Add(requestModel.OrderItem);
             }
-            else if (newItem.Quantity <= 0)
+            else if (requestModel.OrderItem.Quantity <= 0)
             {
                 OrderList.Remove(item);
             }
-            else if (newItem.Quantity >= 1)
+            else if (requestModel.OrderItem.Quantity >= 1)
             {
-                item.Quantity = newItem.Quantity;                            
+                item.Quantity = requestModel.OrderItem.Quantity;                            
             }
-            DisCount.DisCountOrder(discountStrategy, OrderList);
+            requestModel.Items= OrderList;
+          await  DisCount.DisCountOrder(requestModel);
         }
 
-        public static void RefreshOrder(DiscountStrategy disCount)
+        public static async Task RefreshOrder(OrderRequestModel requestModel)
         {
-            DisCount.DisCountOrder(disCount, OrderList);
+            requestModel.Items = OrderList;
+            await DisCount.DisCountOrder(requestModel);
         }
 
     }

@@ -50,7 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\AgentHandler.cs" />
+    <Compile Include="AI\AIAgent.cs" />
+    <Compile Include="AI\Common\AIRequest.cs" />
+    <Compile Include="AI\Common\AIRequestArgs.cs" />
+    <Compile Include="AI\Common\AIResponse.cs" />
+    <Compile Include="AI\Tools\ATool.cs" />
+    <Compile Include="AI\Tools\BestChoice\BestChoiceArgs.cs" />
+    <Compile Include="AI\Tools\BestChoice\BestChoiceFunctiondeclaration.cs" />
+    <Compile Include="AI\Tools\BestChoice\BestChoiceTool.cs" />
+    <Compile Include="EventHandlers\AIRecommandHandler.cs" />
     <Compile Include="MenuModel.cs" />
+    <Compile Include="Models\MenuData.cs" />
+    <Compile Include="Models\OrderRequestModel.cs" />
     <Compile Include="Strategies\ADiscountStrategy.cs" />
     <Compile Include="Strategies\消費總額的打折.cs" />
     <Compile Include="Strategies\特定品項的打折.cs" />
@@ -72,10 +84,10 @@
     <Compile Include="DiscountTypes\香煎雞肉買三個打八折.cs" />
     <Compile Include="DiscountTypes\酥炸魚排買二送一.cs" />
     <Compile Include="ShowPanel.cs" />
-    <Compile Include="PanelHandler.cs" />
+    <Compile Include="EventHandlers\PanelHandler.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="MealItem.cs" />
-    <Compile Include="Extension.cs" />
+    <Compile Include="Models\MealItem.cs" />
+    <Compile Include="Extensions\Extension.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
