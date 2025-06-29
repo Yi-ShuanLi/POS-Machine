@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHandlerTest", "EventHa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHandlerTest2", "EventHandlerTest2\EventHandlerTest2.csproj", "{93249FD9-25ED-4AD0-9241-645E09898095}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "c#AI練習", "c#AI練習\c#AI練習.csproj", "{6CCCB1D9-8BE9-495E-8364-FDBF410928E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI練習", "c#AI練習\AI練習.csproj", "{6CCCB1D9-8BE9-495E-8364-FDBF410928E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI練習Booking會議", "AI練習Booking會議\AI練習Booking會議.csproj", "{7ABFAE57-EAB9-4570-A063-A9041E83ED4E}"
 EndProject

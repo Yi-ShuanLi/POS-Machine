@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace c_AI練習
+namespace AI練習.AI.Common
 {
     internal class AIResponse
     {
@@ -49,19 +49,14 @@ namespace c_AI練習
         public class FunctionCall
         {
             public String name { get; set; }
-            public Args args { get; set; }    
+            public object args { get; set; }
         }
-        public class Args
-        {
-            public int brightness {  get; set; }    
-            public string colorTemp {  get; set; }  
-        }
+
 
         public class Part
         {
             public string text { get; set; }
             public FunctionCall functionCall { get; set; }
         }
-
     }
 }
